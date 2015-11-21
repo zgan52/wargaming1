@@ -15,7 +15,8 @@ import android.widget.Toast;
 import com.example.euj.wargaming.GetInfo;
 import com.example.euj.wargaming.R;
 import com.example.euj.wargaming.adapters.ListJeuxCustomAdapter;
-import com.example.euj.wargaming.entites.ListJeux;
+import com.example.euj.wargaming.entites.ListTanks;
+import com.example.euj.wargaming.entites.Listjeux;
 import com.example.euj.wargaming.utils.Myapp;
 
 import java.io.BufferedReader;
@@ -26,7 +27,7 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
 
    public BufferedReader reader = null;
     public GetInfo getI=new GetInfo();
-    List<ListJeux> imgList = null;
+    List<Listjeux> imgList = null;
     SharedPreferences user;
 
     Myapp app;
@@ -52,10 +53,10 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
         }
         getActionBar().setDisplayHomeAsUpEnabled(true);*/
 
-        imgList = new ArrayList<ListJeux>();
-        ListJeux A1 = new ListJeux(img1, "world of tanks", "world of tanks");
-        ListJeux A2 = new ListJeux(img2, "world of planes", "world of planes");
-        ListJeux A3 = new ListJeux(img3, "world of warship", "world of warship");
+        imgList = new ArrayList<Listjeux>();
+        Listjeux A1 = new Listjeux(img1, "world of tanks", "world of tanks");
+        Listjeux A2 = new Listjeux(img2, "world of planes", "world of planes");
+        Listjeux A3 = new Listjeux(img3, "world of warship", "world of warship");
         imgList.add(A1);
         imgList.add(A2);
         imgList.add(A3);
@@ -109,7 +110,7 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        System.out.println(position);
+       System.out.println(position);
         if(position==0)
         {
             Intent intent = new Intent(this, worldoftanksassistant.class);

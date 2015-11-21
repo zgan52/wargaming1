@@ -9,21 +9,23 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.euj.wargaming.R;
-import com.example.euj.wargaming.entites.Joueurtanks;
+import com.example.euj.wargaming.entites.ListTanks;
+import com.example.euj.wargaming.entites.Listjeux;
 import com.example.euj.wargaming.utils.Utils;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 /**
- * Created by Bouba on 19/11/2015.
+ * Created by Euj on 21/11/2015.
  */
-public class ListJoueurTankCustomAdapter extends ArrayAdapter<Joueurtanks> {
+public class ListTankCustomAdapter extends ArrayAdapter<ListTanks> {
+
     private int resourceId = 0;
     private LayoutInflater inflater;
     public Context mContext;
 
-    public ListJoueurTankCustomAdapter(Context context, int resourceId, List<Joueurtanks> mediaItems) {
+    public ListTankCustomAdapter(Context context, int resourceId, List<ListTanks> mediaItems) {
         super(context, 0, mediaItems);
         this.resourceId = resourceId;
         this.mContext = context;
@@ -31,10 +33,9 @@ public class ListJoueurTankCustomAdapter extends ArrayAdapter<Joueurtanks> {
 
     }
 
-
     //ViewHolder Design Pattern
     static class ViewHolder {
-        public TextView textTitle, textvictoire,textbataille;
+        public TextView textTitle, DescText;
         public ImageView image;
     }
 
@@ -47,20 +48,19 @@ public class ListJoueurTankCustomAdapter extends ArrayAdapter<Joueurtanks> {
         if (rowView == null) {
             rowView = inflater.inflate(resourceId, parent, false);
             //Configuration du ViewHolder
-            holder.image = (ImageView) rowView.findViewById(R.id.tankjoueurimage);
-            holder.textTitle = (TextView) rowView.findViewById(R.id.tankjoueurtag);
-            holder.textvictoire = (TextView) rowView.findViewById(R.id.tankjoueurvictoire);
-            holder.textbataille = (TextView) rowView.findViewById(R.id.tankjoueurbatailles);
+            holder.image = (ImageView) rowView.findViewById(R.id.imgArticle);
+            holder.textTitle = (TextView) rowView.findViewById(R.id.titreArticle);
             Utils.changeFont(mContext.getAssets(), holder.textTitle);
+            holder.DescText = (TextView) rowView.findViewById(R.id.descArticle);
             rowView.setTag(holder);
         }else {
             //Affecter les données aux Views
             holder = (ViewHolder) rowView.getTag();
         }
-        Joueurtanks article = getItem(position);
-        holder.textvictoire.setText(article.getVictoires());
-        holder.textbataille.setText(article.getBatailles());
-        holder.textTitle.setText(article.getTag());
+        ListTanks article = getItem(position);
+
+        holder.textTitle.setText(article.getName());
+        holder.DescText.setText(article.getLevel());
         Picasso.with(mContext).load(article.getImage())
                 .into(holder.image);
 
@@ -68,3 +68,4 @@ public class ListJoueurTankCustomAdapter extends ArrayAdapter<Joueurtanks> {
     }
 
 }
+

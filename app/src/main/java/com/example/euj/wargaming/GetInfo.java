@@ -18,7 +18,7 @@ public class GetInfo extends Activity{
     Intent intent=null;
     public void callint()
     {
-        System.out.println("1111111");
+
     intent= new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.fr"));
     startActivity(intent);
     }

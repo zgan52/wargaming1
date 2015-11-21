@@ -11,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.example.euj.wargaming.Avtivity.Fragments.HomeFragment;
+import com.example.euj.wargaming.Avtivity.Fragments.ListTanks;
 import com.example.euj.wargaming.Avtivity.Fragments.TankFragment;
 import com.example.euj.wargaming.Avtivity.PageViewer.ProfilePageViewer;
 import com.example.euj.wargaming.R;
@@ -50,7 +51,7 @@ public class worldoftanksassistant extends AppCompatActivity implements Fragment
                 title ="Profile";
                 break;
             case 1:
-                fragment = new HomeFragment();
+                fragment = new ListTanks();
                 title = getString(R.string.title_home);
                 break;
             case 2:
