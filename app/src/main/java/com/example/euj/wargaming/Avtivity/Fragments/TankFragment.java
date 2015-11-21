@@ -86,21 +86,22 @@ public class TankFragment extends Fragment {
 
         @Override
         protected String doInBackground(String... params) {
-            try {
+            if(isAdded()) {
+                try {
 
-            String myURL1 = " http://api.worldoftanks.eu/wot/account/tanks/?application_id=7ae23772426dd2b4d758769f65850f26&account_id=518153743";
-            URL url1 = new URL(myURL1);
-            HttpURLConnection connection1 = (HttpURLConnection) url1.openConnection();
-            connection1.connect();
-            InputStream inputStream1 = connection1.getInputStream();
-            String result1 = InputStreamOperations.InputStreamToString(inputStream1);
-                JSONObject jsonObject1 = new JSONObject(result1);
-                String tanksarray=jsonObject1.getJSONObject("data").getString("518153743");
-                parseJsonTeachers(vehls, tanksarray);
-            } catch (Exception e) {
-                e.printStackTrace();
+                    String myURL1 = " http://api.worldoftanks.eu/wot/account/tanks/?application_id=7ae23772426dd2b4d758769f65850f26&account_id=518153743";
+                    URL url1 = new URL(myURL1);
+                    HttpURLConnection connection1 = (HttpURLConnection) url1.openConnection();
+                    connection1.connect();
+                    InputStream inputStream1 = connection1.getInputStream();
+                    String result1 = InputStreamOperations.InputStreamToString(inputStream1);
+                    JSONObject jsonObject1 = new JSONObject(result1);
+                    String tanksarray = jsonObject1.getJSONObject("data").getString("518153743");
+                    parseJsonTeachers(vehls, tanksarray);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
-
 
 return null;
         }
