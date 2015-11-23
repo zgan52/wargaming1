@@ -1,5 +1,6 @@
 package com.example.euj.wargaming.Avtivity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -11,6 +12,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.example.euj.wargaming.Avtivity.Fragments.HomeFragment;
+import com.example.euj.wargaming.Avtivity.Fragments.ProfileglobaleFragment;
 import com.example.euj.wargaming.Avtivity.Fragments.TankFragment;
 import com.example.euj.wargaming.Avtivity.PageViewer.ProfilePageViewer;
 import com.example.euj.wargaming.R;
@@ -35,13 +37,15 @@ public class worldoftanksassistant extends AppCompatActivity implements Fragment
         drawerFragment.setUp(R.id.fragment_navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout), mToolbar);
         drawerFragment.setDrawerListener(this);
         user = getSharedPreferences("user", MODE_PRIVATE);
-        drawerFragment.Name.setText(user.getString("name",""));
+        drawerFragment.Name.setText(user.getString("name", ""));
+
     }
     public void onDrawerItemSelected(View view, int position) {
         displayView(position);
 
     }
     private void displayView(int position) {
+
         String title = getString(R.string.app_name);
         Fragment fragment=null;
         switch (position) {
@@ -51,7 +55,7 @@ public class worldoftanksassistant extends AppCompatActivity implements Fragment
                 break;
             case 1:
                 fragment = new HomeFragment();
-                title = getString(R.string.title_home);
+                title = "tanks";
                 break;
             case 2:
                 break;

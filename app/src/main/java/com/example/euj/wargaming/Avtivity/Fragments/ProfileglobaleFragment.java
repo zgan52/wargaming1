@@ -2,14 +2,18 @@ package com.example.euj.wargaming.Avtivity.Fragments;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.euj.wargaming.Avtivity.AllStatistiques;
+import com.example.euj.wargaming.Avtivity.MainActivity;
 import com.example.euj.wargaming.InputStreamOperations;
 import com.example.euj.wargaming.R;
 import com.example.euj.wargaming.entites.Joueur;
@@ -46,9 +50,20 @@ public class ProfileglobaleFragment extends Fragment {
         degat=(TextView) rootView.findViewById(R.id.degat);
         frags=(TextView) rootView.findViewById(R.id.frags);
         exrerience=(TextView) rootView.findViewById(R.id.exrerience);
+        Button allstat = (Button) rootView.findViewById(R.id.buttonstatistiques);
 
 
         new Asycjoueurs().execute();
+
+        allstat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), AllStatistiques.class);
+                startActivity(intent);
+
+
+            }
+        });
 
 
         // Inflate the layout for this fragment
@@ -56,25 +71,24 @@ public class ProfileglobaleFragment extends Fragment {
     }
 
     class Asycjoueurs extends AsyncTask<String, Void, String> {
-        ProgressDialog barProgressDialog = new ProgressDialog(getActivity());
+       // ProgressDialog barProgressDialog = new ProgressDialog(getActivity());
 
 
         @Override
         protected void onPreExecute() {
 
-            barProgressDialog.setTitle("Loading ...");
-            barProgressDialog.setMessage("Load Data in progress ...");
-            barProgressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-            barProgressDialog.show();
+            //barProgressDialog.setTitle("Loading ...");
+            //barProgressDialog.setMessage("Load Data in progress ...");
+            //barProgressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+            //barProgressDialog.show();
 
             super.onPreExecute();
         }
 
         @Override
         protected String doInBackground(String... params) {
-            parseJsonTeachers();
 
-
+                parseJsonTeachers();
 
             return null;
         }
@@ -90,7 +104,7 @@ public class ProfileglobaleFragment extends Fragment {
             arbres.setText(joueur.getArbres());
             degat.setText(joueur.getDegat());
 
-             barProgressDialog.dismiss();
+            // barProgressDialog.dismiss();
 
             super.onPostExecute(result);
         }
@@ -101,6 +115,7 @@ public class ProfileglobaleFragment extends Fragment {
 
     void parseJsonTeachers() {
         try {
+
             String myURL = "http://api.worldoftanks.eu/wot/account/info/?application_id=7ae23772426dd2b4d758769f65850f26&account_id=518153743";
             URL url = new URL(myURL);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();

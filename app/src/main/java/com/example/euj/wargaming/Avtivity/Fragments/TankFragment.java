@@ -1,7 +1,6 @@
 package com.example.euj.wargaming.Avtivity.Fragments;
 
 import android.app.Activity;
-import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -10,12 +9,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.euj.wargaming.InputStreamOperations;
 import com.example.euj.wargaming.R;
-import com.example.euj.wargaming.adapters.ListJeuxCustomAdapter;
 import com.example.euj.wargaming.adapters.ListJoueurTankCustomAdapter;
 import com.example.euj.wargaming.entites.Joueur;
 import com.example.euj.wargaming.entites.Joueurtanks;
@@ -28,7 +27,6 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
 
 public class TankFragment extends Fragment {
     ListView Vehl;
@@ -36,6 +34,7 @@ public class TankFragment extends Fragment {
     ListJoueurTankCustomAdapter VehlAdapter;
     Joueur joueur= new Joueur();
     TextView victoire,bataille,tag;
+    ProgressBar spinner;
     public TankFragment() {
 
         // Required empty public constructor
@@ -50,11 +49,13 @@ public class TankFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_messages, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_joueur_tanks, container, false);
         Vehl = (ListView) rootView.findViewById(R.id.listViewPlayerTanks);
         victoire = (TextView) rootView.findViewById(R.id.tankjoueurvictoire);
         bataille = (TextView) rootView.findViewById(R.id.tankjoueurbatailles);
         tag = (TextView) rootView.findViewById(R.id.tankjoueurtag);
+        spinner = (ProgressBar)rootView.findViewById(R.id.joueurtanksProgressSpiner);
+
 
         new Asycjoueurstanks().execute();
         Vehl.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -70,26 +71,18 @@ public class TankFragment extends Fragment {
     public
 
     class Asycjoueurstanks extends AsyncTask<String, Void, String> {
-        ProgressDialog barProgressDialog = new ProgressDialog(getActivity());
 
 
         @Override
         protected void onPreExecute() {
-
-            barProgressDialog.setTitle("Loading ...");
-            barProgressDialog.setMessage("Load Data in progress ...");
-            barProgressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-            barProgressDialog.show();
-
             super.onPreExecute();
         }
 
         @Override
         protected String doInBackground(String... params) {
-            if(isAdded()) {
-                try {
 
-                    String myURL1 = " http://api.worldoftanks.eu/wot/account/tanks/?application_id=7ae23772426dd2b4d758769f65850f26&account_id=518153743";
+                try {
+                    String myURL1 = "http://api.worldoftanks.eu/wot/account/tanks/?application_id=7ae23772426dd2b4d758769f65850f26&account_id=518153743";
                     URL url1 = new URL(myURL1);
                     HttpURLConnection connection1 = (HttpURLConnection) url1.openConnection();
                     connection1.connect();
@@ -97,20 +90,20 @@ public class TankFragment extends Fragment {
                     String result1 = InputStreamOperations.InputStreamToString(inputStream1);
                     JSONObject jsonObject1 = new JSONObject(result1);
                     String tanksarray = jsonObject1.getJSONObject("data").getString("518153743");
+
                     parseJsonTeachers(vehls, tanksarray);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-            }
-
-return null;
+            return null;
         }
 
         @Override
         protected void onPostExecute(String result) {
             VehlAdapter = new ListJoueurTankCustomAdapter(getActivity(), R.layout.one_joueurtank,vehls);
             Vehl.setAdapter(VehlAdapter);
-            barProgressDialog.dismiss();
+            spinner.setVisibility(View.GONE);
+            Vehl.setVisibility(View.VISIBLE);
             super.onPostExecute(result);
         }
     }
@@ -151,7 +144,6 @@ return null;
 /**----------------------------------------------------------------------------------------------------------------------------------*/
                 tanks.add(joueurtanks);
             }
-            joueur.setJoueurtanks(tanks);
         } catch (JSONException e) {
             e.printStackTrace();
 

@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.euj.wargaming.Model.NavDrawerItem;
@@ -74,6 +75,7 @@ public class FragmentDrawer extends Fragment {
         View layout = inflater.inflate(R.layout.fragment_navigation_drawer, container, false);
         recyclerView = (RecyclerView) layout.findViewById(R.id.drawerList);
         Name= (TextView) layout.findViewById(R.id.Name);
+
 
 
         adapter = new NavigationDrawerAdapter(getActivity(), getData());

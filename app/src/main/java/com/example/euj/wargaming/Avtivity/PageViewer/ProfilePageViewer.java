@@ -1,6 +1,7 @@
 package com.example.euj.wargaming.Avtivity.PageViewer;
 
 import android.annotation.TargetApi;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -23,7 +24,7 @@ import com.example.euj.wargaming.utils.CustomViewPager;
 public class ProfilePageViewer extends Fragment {
     ProfileglobaleFragment ProfileglobaleFragment;
     HomeFragment Clan;
-    TankFragment Hotfaits;
+    TankFragment joueurTanks;
     public static CustomViewPager pager;
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
@@ -31,17 +32,19 @@ public class ProfilePageViewer extends Fragment {
                             Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.profile_pageviewer, container, false);
         pager = (CustomViewPager) rootView.findViewById(R.id.viewpager);
-        TitleAdapter titleAdapter = new TitleAdapter(getChildFragmentManager());
+
+        TitleAdapter titleAdapter = new TitleAdapter(getFragmentManager());
         pager.setAdapter(titleAdapter);
         pager.setCurrentItem(0);
 
         PagerTabStrip pagerTabStrip = (PagerTabStrip) rootView.findViewById(R.id.pagerTabStrip);
         pagerTabStrip.setDrawFullUnderline(true);
+        pagerTabStrip.setTabIndicatorColor(Color.parseColor("#39392F"));
         return rootView;
 
     }
     class TitleAdapter extends FragmentPagerAdapter {
-        private String titles[] = new String[]{"Profile","Achivement", "Tanks"};
+        private String titles[] = new String[]{"Profile", "Tanks"};
         public TitleAdapter(FragmentManager fm) {
             super(fm);
 
@@ -58,9 +61,9 @@ public class ProfilePageViewer extends Fragment {
                 case 0:
                     return  ProfileglobaleFragment = new ProfileglobaleFragment();
                 case 1:
-                    return  Clan = new HomeFragment();
+                    return  joueurTanks = new TankFragment();
                 case 2:
-                    return  Hotfaits = new TankFragment();
+
             }
             return null;
         }

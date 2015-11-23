@@ -3,13 +3,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="info.androidhive.materialdesign.activity.HomeFragment">
+    tools:context="info.androidhive.materialdesign.activity.HomeFragment"
+    android:background="@color/colorPrimary">
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:weightSum="1">
+        android:weightSum="1"
+        android:id="@+id/linearLayout">
 
         <LinearLayout
             android:orientation="vertical"
@@ -22,7 +24,7 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="Cote:"
                 android:id="@+id/textView4"
-                android:textColor="#180c13" />
+                android:textColor="#8A8B7D"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -30,39 +32,39 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="batailles"
                 android:id="@+id/textView6"
-                android:textColor="#180c13" />
+                android:textColor="#8A8B7D" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="exrerience"
+                android:text="Expérience"
                 android:id="@+id/textView7"
-                android:textColor="#180c13" />
+                android:textColor="#8A8B7D" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="frags"
+                android:text="Véhicules détruits"
                 android:id="@+id/textView8"
-                android:textColor="#180c13" />
+                android:textColor="#8A8B7D" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="arbres"
+                android:text="Arbres couchés"
                 android:id="@+id/textView9"
-                android:textColor="#180c13" />
+                android:textColor="#8A8B7D" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="degat"
+                android:text="Dégâts causés"
                 android:id="@+id/textView10"
-                android:textColor="#180c13" />
+                android:textColor="#8A8B7D" />
         </LinearLayout>
 
         <LinearLayout
@@ -75,43 +77,56 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:id="@+id/Cote"
-                android:textColor="#180c13" />
+                android:textColor="#ffffff" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:id="@+id/batailles"
-                android:textColor="#180c13" />
+                android:textColor="#ffffff"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:id="@+id/exrerience"
-                android:textColor="#180c13" />
+                android:textColor="#ffffff" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:id="@+id/frags"
-                android:textColor="#180c13" />
+                android:textColor="#ffffff" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:id="@+id/arbres"
-                android:textColor="#180c13" />
+                android:textColor="#ffffff" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:id="@+id/degat"
-                android:textColor="#180c13" />
+                android:textColor="#ffffff" />
         </LinearLayout>
     </LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tous les statistiques"
+        android:id="@+id/buttonstatistiques"
+        android:background="@color/colorPrimary"
+        android:textColor="#8A8B7D"
+        android:layout_below="@+id/linearLayout"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>

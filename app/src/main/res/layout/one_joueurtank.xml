@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:background="@color/colorPrimary">
 
     <ImageView
         android:id="@+id/tankjoueurimage"
@@ -28,13 +29,15 @@
             android:id="@+id/editText"
             android:text=" tag :"
             android:textSize="16sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:textColor="#8A8B7D"/>
+
         <TextView android:id="@+id/tankjoueurtag"
             android:layout_width="245dp"
             android:layout_height="wrap_content"
             android:textSize="16sp"
             android:textStyle="bold"
-            />
+            android:textColor="#ffffff"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -42,14 +45,16 @@
             android:text="Victoires:"
             android:id="@+id/textView"
             android:textSize="16sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:textColor="#8A8B7D"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/tankjoueurvictoire"
             android:textSize="16sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:textColor="#ffffff"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -57,7 +62,8 @@
             android:text="Batailles"
             android:id="@+id/textView2"
             android:textSize="16sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:textColor="#8A8B7D"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -65,7 +71,8 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:id="@+id/tankjoueurbatailles"
             android:textSize="16sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:textColor="#ffffff"/>
     </LinearLayout>
 
 </LinearLayout>
